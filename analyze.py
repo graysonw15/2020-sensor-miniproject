@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
 
 
-    # #find and plot the pdfs
+    #find and plot the pdfs
     tempplot = tempdf.plot.kde()
     plt.title("PDF of Temperature Data")
     plt.xlabel("Temperature")
@@ -80,12 +80,26 @@ if __name__ == "__main__":
 
 
     for k in data:
-        data[k].plot()
+        #data[k].plot()
         time = data[k].index
-        plt.figure()
+        #plt.figure()
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
+        plt.show()
+    
+    
+    #mean and variance of time intervals
+    timeintervals = np.diff(time.values).astype(np.int64)//1000000000
+    print("The mean time interval is ", np.mean(timeintervals))
+    print("The time interval variance is ", np.var(timeintervals))
+    
+    #make time interval data into data frame in order to plot PDF
+    timedict = {"time": timeintervals}
+    #make time interval dataframe
+    timeintdf = pandas.DataFrame()
+    #plot PDF
+    timeintPDF = timeintdf.plot.kde()
+    plt.title("PDF of Time Intervals Between Data Points")
 
-
-    plt.show()
+    
 
