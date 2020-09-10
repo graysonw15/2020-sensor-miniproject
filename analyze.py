@@ -66,6 +66,7 @@ if __name__ == "__main__":
     print("\nThe occupancy variance is:\n", occudf.var())
 
 
+
     # #find and plot the pdfs
     tempplot = tempdf.plot.kde()
     plt.title("PDF of Temperature Data")
