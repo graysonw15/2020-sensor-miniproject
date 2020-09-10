@@ -52,12 +52,39 @@ if __name__ == "__main__":
 
     data = load_data(file)
 
+# Celia's additions:
+    
+    #take dataframes out of dictionary
+    tempdf = data["temperature"]
+    occudf = data["occupancy"]
+    co2df = data["co2"]
+    
+    #find the means and variances
+    print("\nThe mean temperature is:\n", tempdf.mean())
+    print("\nThe temperature variance is:\n", tempdf.var())
+    print("\nThe mean occupancy is:\n", occudf.mean())
+    print("\nThe occupancy variance is:\n", occudf.var())
+
+
+    # #find and plot the pdfs
+    tempplot = tempdf.plot.kde()
+    plt.title("PDF of Temperature Data")
+    plt.xlabel("Temperature")
+    occuplot = occudf.plot.kde()
+    plt.title("PDF of Occupancy Data")
+    plt.xlabel("Occupancy")
+    co2plot = co2df.plot.kde()
+    plt.title("PDF of CO2 Data")
+    plt.xlabel("CO2")
+
+
     for k in data:
-        # data[k].plot()
+        data[k].plot()
         time = data[k].index
-        data[k].hist()
         plt.figure()
         plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
         plt.xlabel("Time (seconds)")
 
+
     plt.show()
+
