@@ -16,7 +16,7 @@ from datetime import datetime
 import typing as T
 import matplotlib.pyplot as plt
 import numpy as np
-
+from scipy.stats import norm
 
 def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
 
