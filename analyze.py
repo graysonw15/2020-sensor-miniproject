@@ -93,5 +93,5 @@ if __name__ == "__main__":
     timeint = plt.plot(norm.pdf(timeintervals))
     plt.title("PDF of Time Intervals Between Data Points")
 
-    
+    plt.show()
 
