@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     
     # Prints relative stats (ie. upper/lower bounds, mean)
-    print("\nFiltered temperatures and created anaomolies_log in directory.")
+    print("\nFiltered temperatures and created anomolies_log in directory.")
     print("The temperature bounds for lab1 is: [", np.round(np.nanmin(filterdf["lab1"]),2), ",", 
         np.round(np.nanmax(filterdf["lab1"]),2), "] (℃)")
     print("The temperature bounds for office is: [", np.round(np.nanmin(filterdf["office"]),2), ",", 
