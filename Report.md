@@ -10,6 +10,6 @@ After setting up the repository and python websockets, our team ran the client a
 #### Task 2 Results/Commentary:
 
 #### Task 3 Results/Commentary:
-For this task, our team created a new python file called '''Report.py - this file contains code that detects temperature anamolies and records them in a .csv file called '''anamolies_log.csv . Hello
+For this task, our team created a new python file called '''Report.py''' - this file contains code that detects temperature anamolies and records them in a .csv file called '''anamolies_log.csv''' . Hello
 
 
