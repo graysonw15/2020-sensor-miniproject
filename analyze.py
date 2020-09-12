@@ -73,12 +73,13 @@ if __name__ == "__main__":
     plt.title("PDF of Occupancy Data")
     co2plot = co2df.plot.kde()
     plt.title("PDF of CO2 Data")
-
-    keylist = ["temperature", "occupancy", "co2"]
+    
+    
     for k in data:
         # data[k].plot()
         time = data[k].index
         data[k].hist()
+        plt.xlabel(k)
     plt.figure()
     plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
     plt.xlabel("Time (seconds)")
