@@ -65,33 +65,30 @@ if __name__ == "__main__":
     print("\nThe mean occupancy is:\n", occudf.mean())
     print("\nThe occupancy variance is:\n", occudf.var())
 
-
-
+    
     #find and plot the pdfs
     tempplot = tempdf.plot.kde()
     plt.title("PDF of Temperature Data")
-    plt.xlabel("Temperature")
     occuplot = occudf.plot.kde()
     plt.title("PDF of Occupancy Data")
-    plt.xlabel("Occupancy")
     co2plot = co2df.plot.kde()
     plt.title("PDF of CO2 Data")
-    plt.xlabel("CO2")
 
-
+    keylist = ["temperature", "occupancy", "co2"]
     for k in data:
-        #data[k].plot()
+        # data[k].plot()
         time = data[k].index
-    
-    
+        data[k].hist()
+    plt.figure()
+    plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
+    plt.xlabel("Time (seconds)")
+    plt.title("Time intervals between data points")
+
     #mean and variance of time intervals
-    timeintervals = np.diff(time.values).astype(np.int64)
+    timeintervals = np.diff(time.values).astype(np.int64)//1000000000
     print("The mean time interval is ", np.mean(timeintervals))
     print("The time interval variance is ", np.var(timeintervals))
     
-    #plot time interval data
-    timeint = plt.plot(norm.pdf(timeintervals))
-    plt.title("PDF of Time Intervals Between Data Points")
 
     plt.show()
 
