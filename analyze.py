@@ -59,27 +59,34 @@ if __name__ == "__main__":
     occudf = data["occupancy"]
     co2df = data["co2"]
     
-    #find the means and variances
-    print("\nThe mean temperature is:\n", tempdf.mean())
-    print("\nThe temperature variance is:\n", tempdf.var())
-    print("\nThe mean occupancy is:\n", occudf.mean())
-    print("\nThe occupancy variance is:\n", occudf.var())
+
+    #find the medians and variances
+    print("\nTask 2:")
+    print("\nThe median temperature of lab1 is:", np.round(tempdf["lab1"].median(),2))
+    print("The temperature variance of lab1 is:", np.round(tempdf["lab1"].var(),2))
+    print("The median occupancy of lab1 is:", np.round(occudf["lab1"].median(),2))
+    print("The occupancy variance of lab1 is:", np.round(occudf["lab1"].var(),2))
 
     
     #find and plot the pdfs
-    tempplot = tempdf.plot.kde()
-    plt.title("PDF of Temperature Data")
-    occuplot = occudf.plot.kde()
-    plt.title("PDF of Occupancy Data")
-    co2plot = co2df.plot.kde()
-    plt.title("PDF of CO2 Data")
-    
+    plt.figure()
+    tempplot = tempdf["lab1"].hist(bins=20)
+    plt.title("Lab 1 Temperature Data")
+    plt.xlabel("Temperature (℃)")
+    plt.figure()
+    occuplot = occudf["lab1"].hist(bins=20)
+    plt.title("Lab 1 Occupancy Data")
+    plt.xlabel("Occupancy (persons)")
+    plt.figure()
+    co2plot = co2df["lab1"].hist(bins=20)
+    plt.title("Lab 1 CO2 Data")
+    plt.xlabel("CO2")
     
     for k in data:
-        # data[k].plot()
+    #     # data[k].plot()
         time = data[k].index
-        data[k].hist()
-        plt.xlabel(k)
+    #     # data[k].hist()
+    #     # plt.xlabel(k)
     plt.figure()
     plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
     plt.xlabel("Time (seconds)")
@@ -87,8 +94,8 @@ if __name__ == "__main__":
 
     #mean and variance of time intervals
     timeintervals = np.diff(time.values).astype(np.int64)//1000000000
-    print("The mean time interval is ", np.mean(timeintervals))
-    print("The time interval variance is ", np.var(timeintervals))
+    print("\nThe mean time interval is ", np.round(np.mean(timeintervals),2))
+    print("The time interval variance is ", np.round(np.var(timeintervals),2))
     
 
     plt.show()

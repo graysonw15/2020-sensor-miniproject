@@ -54,8 +54,8 @@ if __name__ == "__main__":
 
     # Defines the mean and standard deviation of data 
     print("\nDropped outlier temperature points, next check gaussian-filtering:")
-    print("The mean temperature is:\n", dropdf.mean())
-    print("The temperature standard deviation is:\n", dropdf.std())
+    print("The mean temperature of the remaining points is:\n", dropdf.mean())
+    print("The temperature standard deviation of the remaining points is:\n", dropdf.std())
 
     # Filters out the temperature data outside of 2 std. deviations
     filterdf = dropdf[np.abs(dropdf-dropdf.mean()) <= (2*dropdf.std())]
@@ -72,11 +72,14 @@ if __name__ == "__main__":
     # Saves Outliers and Filtered Terms into a .csv file
     anamolies = pandas.concat([outlier,gaussf])
     anamolies.to_csv('anamolies_log.csv')
-
+    percent = anamolies.shape[0]/tempdf.shape[0]*100
     
     # Prints relative stats (ie. upper/lower bounds, mean)
-    print("\nFiltered temperatures and created anomolies_log in directory.")
-    print("The temperature bounds for lab1 is: [", np.round(np.nanmin(filterdf["lab1"]),2), ",", 
+    print("\nFiltered out anamolies and created anomolies_log in directory.")
+    print(np.round(percent,2), "percent of total temperatures have been filtered for better results.")
+    print("The median temperature of the 'bad' points is:\n", anamolies.median())
+    print("The temperature variance of the 'bad' points is:\n", anamolies.var())
+    print("\nNow, the temperature bounds for 'good' data from lab1 is: [", np.round(np.nanmin(filterdf["lab1"]),2), ",", 
         np.round(np.nanmax(filterdf["lab1"]),2), "] (℃)")
     print("The temperature bounds for office is: [", np.round(np.nanmin(filterdf["office"]),2), ",", 
         np.round(np.nanmax(filterdf["office"]),2), "] (℃)")
