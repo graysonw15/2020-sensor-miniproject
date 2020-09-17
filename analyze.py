@@ -82,11 +82,9 @@ if __name__ == "__main__":
     plt.title("Lab 1 CO2 Data")
     plt.xlabel("CO2")
     
-    for k in data:
-    #     # data[k].plot()
+    
+    for k in data
         time = data[k].index
-    #     # data[k].hist()
-    #     # plt.xlabel(k)
     plt.figure()
     plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
     plt.xlabel("Time (seconds)")
