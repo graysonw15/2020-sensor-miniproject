@@ -25,6 +25,6 @@ This simulation was a great exercise for our team to practice Github, websockets
 
 Since both of us are fairly new to socket programming, we thought that the Python websocket library was nice because it is high-level. For example, we were able to create a websocket with one line of code. Neither of us have used C++ before so we do not have much to compare to when it comes to socket programming.
 
-For the scopes of this project, having sensors reach out to servers when they have data would be beneficial so that anamolies are better tracked. For example if we polled servers, persistent temperature fluctuations may be mistaked for an anomaly because the polling misses the rest of the fluctuation. Either method is useful, it just depends on what the application of the sensor data is.
+For the scopes of this project, having sensors reach out to servers when they have data would be beneficial so that anamolies are better tracked. For example if we polled servers, persistent temperature fluctuations may be mistaken for an anomaly because the polling misses the rest of the fluctuation. Both methods are useful, it just depends on what the application of the sensor data is.
 
 
